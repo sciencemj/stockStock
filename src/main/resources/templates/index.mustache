@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>StockStock!</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2&display=swap" rel="stylesheet">
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="user">
+        {{#userName}}
+            Logged in as: <span id="user">{{userName}}</span>
+            <a href="/api/logout"><button id="small">Logout</button></a>
+        {{/userName}}
+        {{^userName}}
+            <a href="/login"><button id="small">Login</button></a>
+        {{/userName}}
+    </div>
+    <h1>StockStock!</h1>
+    <h2>
+        {{#userName}}
+            Logged in as: <span id="user">{{userName}}</span>
+            <a href="/api/logout"><button id="small">Logout</button></a>
+        {{/userName}}
+        {{^userName}}
+            <a href="/login"><button id="small">Login</button></a>
+        {{/userName}}
+    </h2>
+    <div class="menu">
+        <button id="button">MARKET</button><br>
+        <a href="/app/bank"><button id="button">BANK</button></a><br>
+        <button id="button">NEWS</button>
+    </div>
+</body>
+</html>
