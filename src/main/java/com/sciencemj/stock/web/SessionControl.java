@@ -6,6 +6,7 @@ import com.sciencemj.stock.service.StockService;
 import com.sciencemj.stock.service.UserService;
 import com.sciencemj.stock.web.dto.UserResponseDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -57,5 +58,4 @@ public class SessionControl {
     public Double[] graph(@PathVariable String name){
         return stockService.findByName(name).getHistory();
     }
-
 }
