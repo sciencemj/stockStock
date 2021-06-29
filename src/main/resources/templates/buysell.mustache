@@ -33,7 +33,8 @@
         '9',
         '10'
         ];
-        function graph(g){
+        function graph(payload){
+            var g = JSON.parse(payload.body)
             const data = {
             labels: labels,
             datasets: [{
