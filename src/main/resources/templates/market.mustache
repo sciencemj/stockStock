@@ -1,0 +1,26 @@
+{{>layout/header}}
+<body>
+    <h1>market</h1>
+    <table class="table table-horizontal table-bordered">
+        <thead class="thead-strong">
+        <tr>
+            <th>이름</th>
+            <th>가격</th>
+            <th>등락</th>
+            <th>사기/팔기</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+        {{#stocks}}
+            <tr>
+                <!--<td>{{id}}</td>-->
+                <td>{{name}}</td>
+                <td>{{price}}</td>
+                <td>{{change}}</td>
+                <td><a href="/buysell/{{name}}"><button id="small">BUY/SELL</button></a></td>
+            </tr>
+        {{/stocks}}
+        </tbody>
+    </table>
+</body>
+</html>

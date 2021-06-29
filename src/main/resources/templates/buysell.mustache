@@ -1,0 +1,72 @@
+{{>layout/header}}
+<body>
+    <h1 id="name">{{name}}</h1>
+        <canvas id="graph" width="600" height="400"></canvas>
+</body>
+<footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script>
+         var sock = null,
+         stompClient = null;
+        var name = document.getElementById('name').textContent;
+        function connect(){
+        sock = new SockJS("http://localhost:8080/ws");
+        stompClient = Stomp.over(sock);    //stomp client 구성
+        stompClient.connect({}, function(frame){
+            console.log('connected stomp over sockjs');
+            // subscribe message
+            stompClient.subscribe('/topic/graph/'+name, graph);
+        });
+        }
+        const labels = [
+        '1',
+        '2',
+        '3',
+        '4',
+        '5',
+        '6',
+        '7',
+        '8',
+        '9',
+        '10'
+        ];
+        function graph(g){
+            const data = {
+            labels: labels,
+            datasets: [{
+                label: 'price',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: g,
+            }]
+            };
+            const config = {
+                type: 'line',
+                data,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            min: 0,
+                            suggestedMax: 500
+                            //ticks: {
+                            //stepSize: 20 //<-- set this
+                            //}
+                        }
+                    }
+                }
+            }
+            var chart = new Chart(
+                document.getElementById('graph'),
+                config
+            );
+        }
+        window.onload =function(){
+            connect();
+        }
+    </script>
+</footer>
+</html>

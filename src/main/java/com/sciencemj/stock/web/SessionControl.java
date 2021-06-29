@@ -2,6 +2,7 @@ package com.sciencemj.stock.web;
 
 import com.sciencemj.stock.domain.user.SessionUser;
 import com.sciencemj.stock.domain.user.User;
+import com.sciencemj.stock.service.StockService;
 import com.sciencemj.stock.service.UserService;
 import com.sciencemj.stock.web.dto.UserResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -11,11 +12,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
 public class SessionControl {
     private final UserService service;
+    private final StockService stockService;
     private final HttpSession httpSession;
 
     @PostMapping(value = "/modify")
@@ -48,6 +51,11 @@ public class SessionControl {
         }
         //System.out.println("logging3");
         return false;
+    }
+
+    @GetMapping("/graph/{name}")
+    public Double[] graph(@PathVariable String name){
+        return stockService.findByName(name).getHistory();
     }
 
 }

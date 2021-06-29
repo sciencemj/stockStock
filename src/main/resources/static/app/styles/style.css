@@ -41,3 +41,14 @@ p{
     border: 1px solid;
     background-color: whitesmoke;
 }
+table{
+    width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+    align-items: center;
+}
+th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}

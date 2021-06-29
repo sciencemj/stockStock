@@ -14,6 +14,6 @@ public class WebserviceConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(loginInterceptor)
-        .addPathPatterns("/test");
+        .addPathPatterns("/mm");
     }
 }

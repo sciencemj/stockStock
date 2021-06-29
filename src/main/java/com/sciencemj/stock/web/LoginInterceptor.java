@@ -1,5 +1,6 @@
 package com.sciencemj.stock.web;
 
+import com.sciencemj.stock.domain.user.SessionUser;
 import com.sciencemj.stock.domain.user.User;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -13,7 +14,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession httpSession = request.getSession();
-        User sessionItem = (User) httpSession.getAttribute("user");
+        SessionUser sessionItem = (SessionUser) httpSession.getAttribute("user");
         if (sessionItem == null){
             response.getOutputStream().println("NOT LOGINED!");
             return false;
