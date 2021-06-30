@@ -84,8 +84,10 @@
             );
         }
         function change(ndata){
-            for(let i = chart.data.labels.length;i < ndata.length;i++){
-                chart.data.labels.push(i+1);
+            if(chart.data.labels.length < ndata.length){
+                for(let i = chart.data.labels.length;i < ndata.length;i++){
+                    chart.data.labels.push(i+1);
+                }
             }
             chart.data.datasets[0].data = ndata;
             
