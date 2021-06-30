@@ -47,7 +47,7 @@ public class Stock {
             history[i] = history[i+1];
         }
         history[9] = price;
-        if (historyS.split(" ").length <= 40) {
+        if (historyS.split(" ").length < 40) {
             historyS += " " + price;
         }else {
             StringBuilder h = new StringBuilder();
@@ -55,6 +55,7 @@ public class Stock {
             for (int i = 1;i < s.length;i++){
                 h.append(s[i]).append(" ");
             }
+            historyS = h.toString();
         }
         return this;
     }
