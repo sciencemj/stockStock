@@ -55,6 +55,7 @@ public class Stock {
             for (int i = 1;i < s.length;i++){
                 h.append(s[i]).append(" ");
             }
+            h.append(price);
             historyS = h.toString();
         }
         return this;
