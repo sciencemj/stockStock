@@ -21,18 +21,7 @@
             stompClient.subscribe('/topic/graph/'+name, graph);
         });
         }*/
-        const labels = [
-        '1',
-        '2',
-        '3',
-        '4',
-        '5',
-        '6',
-        '7',
-        '8',
-        '9',
-        '10'
-        ];
+        var lables_ = [];
         var chart;
         var name = document.getElementById('name').textContent;
         function getG(){
@@ -59,9 +48,14 @@
             });
         function graph(payload){
             var g = payload;
+            labels_ = [];
+            for(let i = 0;i < g.length;i++){
+                labels_.push(i+1);
+            }
             const data = {
-            labels: labels,
+            labels: labels_,
             datasets: [{
+                fill: true,
                 label: 'price',
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgb(255, 99, 132)',
@@ -90,7 +84,11 @@
             );
         }
         function change(ndata){
+            for(let i = chart.data.labels.length;i < ndata.length;i++){
+                chart.data.labels.push(i+1);
+            }
             chart.data.datasets[0].data = ndata;
+            
             chart.update();
         }
         window.onload =function(){

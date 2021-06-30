@@ -56,6 +56,10 @@ public class SessionControl {
 
     @GetMapping("/graph/{name}")
     public Double[] graph(@PathVariable String name){
-        return stockService.findByName(name).getHistory();
+        String[] sp = stockService.findByName(name).getHistoryS().split(" ");
+        Double[] spr = new Double[sp.length];
+        for (int i = 0;i < sp.length;i++)
+            spr[i] = Double.parseDouble(sp[i]);
+        return spr;
     }
 }

@@ -13,10 +13,12 @@ public class StockResponseDto {
     private String name;
     private Double price;
     private Double[] history;
+    private String historyS;
     public StockResponseDto(Stock stock){
         this.id = stock.getId();
         this.name = stock.getName();
         this.price = stock.getPrice();
         this.history = stock.getHistory();
+        this.historyS = stock.getHistoryS();
     }
 }
