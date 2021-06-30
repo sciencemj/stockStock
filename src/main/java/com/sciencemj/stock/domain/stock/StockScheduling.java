@@ -39,8 +39,8 @@ public class StockScheduling {
                 try {
                     messagingTemplate.setMessageConverter(new JsonbMessageConverter());
                     messagingTemplate.convertAndSend("/topic/graph/" + s.getName(), s.getHistory());
-                    System.out.println("/topic/graph/" + s.getName());
-                    System.out.println(s.getHistoryS());
+                    //System.out.println("/topic/graph/" + s.getName());
+                    //System.out.println(s.getHistoryS());
                 }catch (Exception e){
                     e.printStackTrace();
                     System.out.println("error while sending message");
