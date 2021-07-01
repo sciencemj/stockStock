@@ -36,15 +36,15 @@ public class StockScheduling {
                 change = r.nextInt(101) - 50;
                 s.changePrice((double) change);
                 stockService.update(s);
-                try {
+                /*try {
                     messagingTemplate.setMessageConverter(new JsonbMessageConverter());
-                    messagingTemplate.convertAndSend("/topic/graph/" + s.getName(), s.getHistory());
+                    //messagingTemplate.convertAndSend("/topic/graph/" + s.getName(), s.getHistory());
                     //System.out.println("/topic/graph/" + s.getName());
                     //System.out.println(s.getHistoryS());
                 }catch (Exception e){
                     e.printStackTrace();
                     System.out.println("error while sending message");
-                }
+                }*/
             }
 
         }
