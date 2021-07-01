@@ -26,28 +26,28 @@ public class Stock {
 
     @Column(nullable = false)
     private Double change;
-
+/*
     @Column(nullable = false)
     private Double[] history = new Double[10];
-
-    @Column(nullable = false)
+*/
+    @Column(nullable = false, length = 50000)
     private String historyS = "";
     @Builder
     public Stock(String name, Double price){
         this.name = name;
         this.price = price;
         this.change = 0D;
-        history[9] = price;
+        //history[9] = price;
         historyS += price;
     }
     public Stock changePrice(Double changed){
         this.change = changed;
         price += changed;
-        for (int i =0;i < 9;i++) {
+        /*for (int i =0;i < 9;i++) {
             history[i] = history[i+1];
         }
-        history[9] = price;
-        if (historyS.split(" ").length < 40) {
+        history[9] = price;*/
+        if (historyS.split(" ").length < 100) {
             historyS += " " + price;
         }else {
             StringBuilder h = new StringBuilder();
