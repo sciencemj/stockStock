@@ -90,6 +90,14 @@
                     chart.data.labels.push(i+1);
                 }
             }
+            var min = Math.min(...ndata);
+            var max = Math.max(...ndata);
+            var min_ = Math.round(0.01 * (min - 250)) * 100;
+            var max_ = Math.round(0.01 * (min + 250)) * 100;
+            if(!(min_ < 0 && min > 0)){
+                chart.config.options.scales.y.min = Math.round(0.01 * (min - 150)) * 100
+            }
+            chart.config.options.scales.y.max = Math.round(0.01 * (max + 150)) * 100
             chart.data.datasets[0].data = ndata;
             
             chart.update();
